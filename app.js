@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Overton services works!');
+  res.send('overton services running on heroku');
 });
 
 const port = process.env.PORT || 5000;
