@@ -13,6 +13,7 @@ const app = express();
 const db = require('./config/database.config');
 mongoose.connect(db.mongoURI, {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
 .then(() => {
   logInfo("mongodb connected...");
