@@ -21,7 +21,6 @@ showController.get('/', (req, res) => {
 
 showController.post('/', (req, res) => {
   const show = req.body;
-  console.log(show);
   addShow(show)
     .then((show) => {
       res.send(show);

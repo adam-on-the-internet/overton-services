@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // bring in util
@@ -23,7 +24,11 @@ mongoose.connect(db.mongoURI, {
   logError(err);
 });
 
-//CORS middleware
+// body parser middleware
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+// CORS middleware
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', ['Authorization', 'Content-Type']);
