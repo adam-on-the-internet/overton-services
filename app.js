@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const {logError, logInfo} = require('./utilities/logger.util');
 
 // bring in controllers
+const indexController = require('./controllers/index.controller');
 const showController = require('./controllers/show.controller');
 
 const app = express();
@@ -32,12 +33,8 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 // use controllers
+app.use('/', indexController);
 app.use('/show', showController);
-
-// naked route
-app.get('/', (req, res) => {
-  res.send('overton services running on heroku');
-});
 
 const port = process.env.PORT || 5000;
 
