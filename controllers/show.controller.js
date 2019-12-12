@@ -18,4 +18,16 @@ showController.get('/', (req, res) => {
     });
 });
 
+showController.post('/', (req, res) => {
+  const show = req.body;
+  addShow(show)
+    .then((show) => {
+      res.send(show);
+    })
+    .catch((err) => {
+      res.statusCode = 500;
+      res.send(err);
+    });
+});
+
 module.exports = showController;
