@@ -18,4 +18,4 @@ showController.get('/', (req, res) => {
     });
 });
 
-module.exports = bookmarkController;
+module.exports = showController;

@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+// bring in util
+const {logError, logInfo} = require('./utilities/logger.util');
+
 // bring in controllers
 const showController = require('./controllers/show.controller');
 
