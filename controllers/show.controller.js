@@ -2,7 +2,8 @@
 const express = require('express');
 const showController = express.Router();
 const {
-  getAllShows
+  getAllShows,
+  addShow
 } = require("../managers/show.manager");
 
 showController.get('/', (req, res) => {
@@ -20,6 +21,7 @@ showController.get('/', (req, res) => {
 
 showController.post('/', (req, res) => {
   const show = req.body;
+  console.log(show);
   addShow(show)
     .then((show) => {
       res.send(show);

@@ -39,6 +39,7 @@ module.exports = {
 }
 
 const checkForShowErrors = ((show) => {
+  console.log("checking for errors");
   let errors = [];
   if (!show.title) {
     errors.push({ text: 'Please add a title' });
@@ -52,5 +53,6 @@ const checkForShowErrors = ((show) => {
   if (!show.showStatus) {
     errors.push({ text: 'Please add a show status' });
   }
+  console.log("check complete");
   return errors;
 });
