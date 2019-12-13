@@ -4,7 +4,7 @@ const {mailerEmail, mailerPass} = require('../config/mail.config');
 function sendEmail(recipient, subject, message) {
   const transporter = nodeMailer.createTransport({
     service: 'gmail',
-    secure: true,
+    secure: false,
     auth: {
       user: mailerEmail,
       pass: mailerPass
