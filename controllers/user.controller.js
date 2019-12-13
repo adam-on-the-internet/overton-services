@@ -38,7 +38,7 @@ userController.get('/:id', jwtAuthenticated, (req, res) => {
   });
 });
 
-userController.post('/', jwtAuthenticated, (req, res) => {
+userController.post('/', (req, res) => {
   const user = req.body;
   register(user)
   .then((registrationResponse) => {
