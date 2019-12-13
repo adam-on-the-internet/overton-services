@@ -1,6 +1,7 @@
 
 const express = require('express');
 const showController = express.Router();
+const { jwtAuthenticated } = require('../utilities/auth.util');
 const {
   getAllShows,
   getOneShow,
@@ -34,7 +35,7 @@ showController.get('/:id', (req, res) => {
     });
 });
 
-showController.post('/', (req, res) => {
+showController.post('/', jwtAuthenticated, (req, res) => {
   const show = req.body;
   addShow(show)
     .then((show) => {
@@ -46,7 +47,7 @@ showController.post('/', (req, res) => {
     });
 });
 
-showController.delete('/:id', (req, res) => {
+showController.delete('/:id', jwtAuthenticated, (req, res) => {
   const id = req.params.id;
   deleteOneShow(id)
     .then((response) => {
@@ -58,7 +59,7 @@ showController.delete('/:id', (req, res) => {
     });
 });
 
-showController.put('/', (req, res) => {
+showController.put('/', jwtAuthenticated, (req, res) => {
   const show = req.body;
   updateShow(show)
     .then((response) => {
