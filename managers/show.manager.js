@@ -11,6 +11,23 @@ function getAllShows() {
   });
 }
 
+function getOneShow(id) {
+  return new Promise((resolve, reject) => {
+    Show.findOne({
+      _id: id
+    })
+      .then((show) => {
+        if (show) {
+          resolve(show);
+        } else {
+          reject({
+            message: "Failed to find show"
+          });
+        }
+      });
+  });
+}
+
 function addShow(show) {
   return new Promise((resolve, reject) => {
     const errors = checkForShowErrors(show);
@@ -35,6 +52,7 @@ function addShow(show) {
 
 module.exports = {
   getAllShows,
+  getOneShow,
   addShow
 }
 

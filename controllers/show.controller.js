@@ -3,6 +3,7 @@ const express = require('express');
 const showController = express.Router();
 const {
   getAllShows,
+  getOneShow,
   addShow
 } = require("../managers/show.manager");
 
