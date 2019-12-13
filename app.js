@@ -12,6 +12,7 @@ const { logError, logInfo } = require('./utilities/logger.util');
 const indexController = require('./controllers/index.controller');
 const showController = require('./controllers/show.controller');
 const authController = require('./controllers/auth.controller');
+const userController = require('./controllers/user.controller');
 
 // passport config
 require('./config/passport.config')(passport);
@@ -60,6 +61,7 @@ app.use(passport.session());
 app.use('/', indexController);
 app.use('/show', showController);
 app.use('/auth', authController);
+app.use('/user', userController);
 
 // error handlers
 // Catch unauthorised errors
