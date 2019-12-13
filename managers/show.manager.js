@@ -63,11 +63,40 @@ function deleteOneShow(id) {
   });
 }
 
+function updateShow(show) {
+  return new Promise((resolve, reject) => {
+    const id = show._id;
+
+    Show.findOne({
+      _id: id
+    })
+      .then((foundShow) => {
+        if (!foundShow) {
+          reject({
+            message: `Failed to find show`
+          });
+        }
+
+        foundShow.title = show.title;
+        foundShow.details = show.details;
+        foundShow.month = show.month;
+        foundShow.year = show.year;
+        foundShow.showStatus = show.showStatus;
+
+        foundShow.save()
+          .then((editedShow) => {
+            resolve(editedShow);
+          });
+      });
+  });
+}
+
 module.exports = {
   getAllShows,
   getOneShow,
   addShow,
-  deleteOneShow
+  deleteOneShow,
+  updateShow
 }
 
 const checkForShowErrors = ((show) => {

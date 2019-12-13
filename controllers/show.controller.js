@@ -5,7 +5,8 @@ const {
   getAllShows,
   getOneShow,
   addShow,
-  deleteOneShow
+  deleteOneShow,
+  updateShow
 } = require("../managers/show.manager");
 
 showController.get('/', (req, res) => {
