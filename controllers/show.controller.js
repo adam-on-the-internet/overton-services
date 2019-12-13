@@ -4,7 +4,8 @@ const showController = express.Router();
 const {
   getAllShows,
   getOneShow,
-  addShow
+  addShow,
+  deleteOneShow
 } = require("../managers/show.manager");
 
 showController.get('/', (req, res) => {
@@ -22,7 +23,7 @@ showController.get('/', (req, res) => {
 
 showController.get('/:id', (req, res) => {
   const id = req.params.id;
-  getOneshow(id)
+  getOneShow(id)
     .then((show) => {
       res.send(show);
     })

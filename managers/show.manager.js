@@ -50,10 +50,24 @@ function addShow(show) {
   });
 }
 
+function deleteOneShow(id) {
+  return new Promise((resolve, reject) => {
+    Show.deleteOne({
+      _id: id
+    })
+      .then(() => {
+        resolve({
+          message: `Show with given id no longer exists`
+        });
+      });
+  });
+}
+
 module.exports = {
   getAllShows,
   getOneShow,
-  addShow
+  addShow,
+  deleteOneShow
 }
 
 const checkForShowErrors = ((show) => {
