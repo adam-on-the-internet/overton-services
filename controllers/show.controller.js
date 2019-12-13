@@ -58,4 +58,16 @@ showController.delete('/:id', (req, res) => {
     });
 });
 
+showController.put('/', (req, res) => {
+  const show = req.body;
+  updateShow(show)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      res.statusCode = 500;
+      res.send(err);
+    });
+});
+
 module.exports = showController;
