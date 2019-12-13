@@ -1,5 +1,8 @@
+// imports
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const mongoose = require('mongoose');
 
 // bring in util
