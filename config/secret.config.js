@@ -1,12 +1,14 @@
 if (process.env.NODE_ENV === 'production') {
   module.exports = {
-    secret: process.env.SECRET
+    secret: process.env.SECRET,
+    sessionSecret: process.env.SESSION_SECRET
   };
 } else {
   try {
     const {SECRET} = require("../local.env");
     module.exports = {
-      secret: SECRET
+      secret: SECRET,
+      sessionSecret: SESSION_SECRET
     };
   }
   catch (e) {
