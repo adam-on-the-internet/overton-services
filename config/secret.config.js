@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'production') {
   };
 } else {
   try {
-    const {SECRET} = require("../local.env");
+    const {SECRET, SESSION_SECRET} = require("../local.env");
     module.exports = {
       secret: SECRET,
       sessionSecret: SESSION_SECRET
