@@ -9,16 +9,16 @@ const {
 
 require('../models/User.model');
 
-router.get('/userDetails', jwtAuthenticated, (req, res) => {
+authController.get('/userDetails', jwtAuthenticated, (req, res) => {
   const user = req.userDetails;
   sendUserDetailsConfirmation(res, user);
 });
 
-router.get('/loggedIn', jwtAuthenticated, (req, res) => {
+authController.get('/loggedIn', jwtAuthenticated, (req, res) => {
   sendLoggedInConfirmation(res);
 });
 
-router.post('/login', (req, res, next) => {
+authController.post('/login', (req, res, next) => {
   loginUser(res, req, next);
 });
 

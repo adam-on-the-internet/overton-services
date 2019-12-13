@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'production') {
   try {
     const {SECRET} = require("../local.env");
     module.exports = {
-      secret: localSecret
+      secret: SECRET
     };
   }
   catch (e) {
