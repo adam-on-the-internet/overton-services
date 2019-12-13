@@ -56,7 +56,7 @@ userController.post('/', jwtAuthenticated, (req, res) => {
   });
 });
 
-userController.put('/passwordReset/automatic', (req, res) => {
+userController.put('/passwordReset', (req, res) => {
   const email = req.body.email;
   resetPassword(email)
   .then((response) => {
