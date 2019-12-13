@@ -12,6 +12,9 @@ const {logError, logInfo} = require('./utilities/logger.util');
 const indexController = require('./controllers/index.controller');
 const showController = require('./controllers/show.controller');
 
+// passport config
+require('./config/passport.config')(passport);
+
 const app = express();
 
 // DB setup
@@ -40,9 +43,30 @@ var allowCrossDomain = function(req, res, next) {
 }
 app.use(allowCrossDomain);
 
+// session middleware
+const {SESSION_SECRET} = require("../local.env");
+app.use(session({
+  secret: SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // use controllers
 app.use('/', indexController);
 app.use('/show', showController);
+
+// error handlers
+// Catch unauthorised errors
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({"message" : err.name + ": " + err.message});
+  }
+});
 
 const port = process.env.PORT || 5000;
 
