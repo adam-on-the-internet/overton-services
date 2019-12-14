@@ -3,7 +3,7 @@ const { runingProd } = require('../utilities/env.util');
 let mongoUser;
 let mongoPass;
 
-if (runingProd) {
+if (runingProd()) {
   mongoUser = process.env.MONGO_USER;
   mongoPass = process.env.MONGO_PASS;
 } else {
