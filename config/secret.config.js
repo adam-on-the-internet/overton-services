@@ -1,9 +1,9 @@
-const { runingProd } = require('../utilities/env.util');
+const { runningProd } = require('../utilities/env.util');
 
 let secret;
 let sessionSecret;
 
-if (runingProd()) {
+if (runningProd()) {
   secret = process.env.SECRET;
   sessionSecret = process.env.SESSION_SECRET;
 } else {

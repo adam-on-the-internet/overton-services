@@ -1,9 +1,9 @@
-const { runingProd } = require('../utilities/env.util');
+const { runningProd } = require('../utilities/env.util');
 
 let mailerEmail;
 let mailerPass;
 
-if (runingProd()) {
+if (runningProd) {
   mailerEmail = process.env.MAIL_EMAIL;
   mailerPass = process.env.MAIL_PASS;
 } else {
