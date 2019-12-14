@@ -1,15 +1,16 @@
-if (process.env.NODE_ENV === 'production') {
-  module.exports = {
-    secret: process.env.SECRET,
-    sessionSecret: process.env.SESSION_SECRET
-  };
+const { runingProd } = require('../utilities/env.util');
+
+let secret;
+let sessionSecret;
+
+if (runingProd()) {
+  secret = process.env.SECRET;
+  sessionSecret = process.env.SESSION_SECRET;
 } else {
   try {
-    const {SECRET, SESSION_SECRET} = require("../local.env");
-    module.exports = {
-      secret: SECRET,
-      sessionSecret: SESSION_SECRET
-    };
+    const { SECRET, SESSION_SECRET } = require("../local.env");
+    secret = SECRET;
+    sessionSecret = SESSION_SECRET;
   }
   catch (e) {
     if (e instanceof Error && e.code === "MODULE_NOT_FOUND")
@@ -18,3 +19,8 @@ if (process.env.NODE_ENV === 'production') {
       throw e;
   }
 }
+
+module.exports = {
+  secret: secret,
+  sessionSecret: sessionSecret
+};
