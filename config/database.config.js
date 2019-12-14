@@ -21,10 +21,5 @@ if (runingProd) {
 }
 
 module.exports = {
-  mongoURI: buildMongoURI(mongoUser, mongoPass)
+  mongoURI: `mongodb+srv://${mongoUser}:${mongoPass}@cluster0-laibl.mongodb.net/test?retryWrites=true&w=majority`
 };
-
-const buildMongoURI = ((user, pass) => {
-  return `mongodb+srv://${user}:${pass}@cluster0-laibl.mongodb.net/test?retryWrites=true&w=majority`;
-});
-
