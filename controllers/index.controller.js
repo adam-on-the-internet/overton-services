@@ -10,4 +10,8 @@ indexController.get('/health', (req, res) => {
   res.send('UP');
 });
 
+indexController.get('/knockKnock', (req, res) => {
+  res.send('WhoIsThere');
+});
+
 module.exports = indexController;
