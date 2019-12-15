@@ -1,20 +1,13 @@
 const express = require('express');
 const { jwtAuthenticated } = require('../utilities/auth.util');
 const userController = express.Router();
-
-const {
-  getAllUsers,
-  getSingleUser,
-  register,
-  resetPassword
-} = require("../managers/user.manager");
-
+const userManager = require("../managers/user.manager");
 const {
   sendEmail
 } = require("../utilities/mailer.util");
 
 userController.get('/', jwtAuthenticated, (req, res) => {
-  getAllUsers()
+  userManager.getAllUsers()
   .then((users) => {
     res.send({
       users: users
@@ -28,7 +21,7 @@ userController.get('/', jwtAuthenticated, (req, res) => {
 
 userController.get('/:id', jwtAuthenticated, (req, res) => {
   const id = req.params.id;
-  getSingleUser(id)
+  userManager.getSingleUser(id)
   .then((user) => {
     res.send(user);
   })
@@ -40,7 +33,7 @@ userController.get('/:id', jwtAuthenticated, (req, res) => {
 
 userController.post('/', jwtAuthenticated, (req, res) => {
   const user = req.body;
-  register(user)
+  userManager.register(user)
   .then((registrationResponse) => {
     const recipient = user.email;
     const subject = "Welcome to Andrew Overton Portfolio";
@@ -58,7 +51,7 @@ userController.post('/', jwtAuthenticated, (req, res) => {
 
 userController.put('/passwordReset', (req, res) => {
   const email = req.body.email;
-  resetPassword(email)
+  userManager.resetPassword(email)
   .then((response) => {
     const recipient = email;
     const subject = "Password Reset";
