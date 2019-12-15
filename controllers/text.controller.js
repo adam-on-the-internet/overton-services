@@ -1,15 +1,10 @@
 const express = require('express');
 const textController = express.Router();
 const { jwtAuthenticated } = require('../utilities/auth.util');
-const {
-  getAllText,
-  addText,
-  updateText,
-  deleteOneText
-} = require("../managers/text.manager");
+const textManager = require("../managers/text.manager");
 
 textController.get('/', (req, res) => {
-  getAllText()
+  textManager.getAllText()
     .then((text) => {
       res.send({
         text: text
@@ -23,7 +18,7 @@ textController.get('/', (req, res) => {
 
 textController.post('/', jwtAuthenticated, (req, res) => {
   const text = req.body;
-  addText(text)
+  textManager.addText(text)
     .then((text) => {
       res.send(text);
     })
@@ -35,7 +30,7 @@ textController.post('/', jwtAuthenticated, (req, res) => {
 
 textController.delete('/:id', jwtAuthenticated, (req, res) => {
   const id = req.params.id;
-  deleteOneText(id)
+  textManager.deleteOneText(id)
     .then((response) => {
       res.send(response);
     })
@@ -47,7 +42,7 @@ textController.delete('/:id', jwtAuthenticated, (req, res) => {
 
 textController.put('/', jwtAuthenticated, (req, res) => {
   const text = req.body;
-  updateText(text)
+  textManager.updateText(text)
     .then((response) => {
       res.send(response);
     })
