@@ -1,8 +1,7 @@
 const express = require('express');
 const mailController = express.Router();
 const {
-  sendEmailToSelf,
-  sendEmail
+  sendEmailToSelf
 } = require("../utilities/mailer.util");
 
 mailController.post('/', (req, res) => {
@@ -16,8 +15,7 @@ mailController.post('/', (req, res) => {
   } else {
     const subject = `Contacted by ${messageDetails.emailAddress}`;
     const message = `Message: ${messageDetails.message}`;
-    const recipient = "andrewovertonportfolio@gmail.com";
-    sendEmail(recipient, subject, message);
+    sendEmailToSelf(subject, message);
     res.send({
       message: "Mail success"
     });
