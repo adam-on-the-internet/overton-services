@@ -14,6 +14,7 @@ const showController = require('./controllers/show.controller');
 const authController = require('./controllers/auth.controller');
 const userController = require('./controllers/user.controller');
 const textController = require('./controllers/text.controller');
+const mailController = require('./controllers/mail.controller');
 
 // passport config
 require('./config/passport.config')(passport);
@@ -64,6 +65,7 @@ app.use('/show', showController);
 app.use('/auth', authController);
 app.use('/user', userController);
 app.use('/text', textController);
+app.use('/mail', mailController);
 
 // error handlers
 // Catch unauthorised errors

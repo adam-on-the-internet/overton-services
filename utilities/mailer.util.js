@@ -25,6 +25,12 @@ function sendEmail(recipient, subject, message) {
   });
 }
 
+function sendEmailToSelf(subject, message) {
+  const recipient = "andrewovertonportfolio@gmail.com";
+  sendEmail(recipient, subject, message);
+}
+
 module.exports = {
-  sendEmail
+  sendEmail,
+  sendEmailToSelf
 }
