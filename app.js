@@ -13,6 +13,7 @@ const indexController = require('./controllers/index.controller');
 const showController = require('./controllers/show.controller');
 const authController = require('./controllers/auth.controller');
 const userController = require('./controllers/user.controller');
+const textController = require('./controllers/text.controller');
 
 // passport config
 require('./config/passport.config')(passport);
@@ -62,6 +63,7 @@ app.use('/', indexController);
 app.use('/show', showController);
 app.use('/auth', authController);
 app.use('/user', userController);
+app.use('/text', textController);
 
 // error handlers
 // Catch unauthorised errors
