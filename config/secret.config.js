@@ -3,7 +3,7 @@ const { runningProd } = require('../utilities/env.util');
 let secret;
 let sessionSecret;
 
-if (process.env.NODE_ENV === 'production') {
+if (runningProd()) {
   secret = process.env.SECRET;
   sessionSecret = process.env.SESSION_SECRET;
 } else {

@@ -3,7 +3,7 @@ const { runningProd } = require('../utilities/env.util');
 let mongoUser;
 let mongoPass;
 
-if (process.env.NODE_ENV === 'production') {
+if (runningProd()) {
   mongoUser = process.env.MONGO_USER;
   mongoPass = process.env.MONGO_PASS;
 } else {
