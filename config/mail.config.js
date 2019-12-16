@@ -3,7 +3,7 @@ const { runningProd } = require('../utilities/env.util');
 let mailerEmail;
 let mailerPass;
 
-if (runningProd()) {
+if (process.env.NODE_ENV === 'production') {
   mailerEmail = process.env.MAIL_EMAIL;
   mailerPass = process.env.MAIL_PASS;
 } else {
