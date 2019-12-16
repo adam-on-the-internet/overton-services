@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('../models/Text.model');
+require('../models/text.model');
 const Text = mongoose.model('text');
 
 function getAllText() {
