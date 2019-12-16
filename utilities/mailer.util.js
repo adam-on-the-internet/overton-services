@@ -11,8 +11,6 @@ function sendEmail(recipient, subject, message) {
       pass: mailerPass
     }
   });
-  console.log(mailerEmail);
-  console.log(mailerPass);
   const mailOptions = {
     from: mailerEmail,
     to: recipient,
