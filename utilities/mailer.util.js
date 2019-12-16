@@ -6,10 +6,13 @@ function sendEmail(recipient, subject, message) {
     service: 'gmail',
     secure: false,
     auth: {
+      type: "login",
       user: mailerEmail,
       pass: mailerPass
     }
   });
+  console.log(mailerEmail);
+  console.log(mailerPass);
   const mailOptions = {
     from: mailerEmail,
     to: recipient,
