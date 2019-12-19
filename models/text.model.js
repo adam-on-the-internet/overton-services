@@ -10,6 +10,11 @@ const TextSchema = new Schema({
     type: String,
     required: false,
   },
+  isOptional: {
+    type: Boolean,
+    required: true,
+    default: true,
+  }
 });
 
 mongoose.model('text', TextSchema);

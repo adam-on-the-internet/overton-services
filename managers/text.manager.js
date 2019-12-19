@@ -20,7 +20,8 @@ function addText(text) {
     else {
       new Text({
         areaName: text.areaName,
-        textContent: text.textContent
+        textContent: text.textContent,
+        isOptional: text.isOptional
       })
         .save()
         .then((resText) => {
@@ -59,6 +60,7 @@ function updateText(text) {
 
         foundText.areaName = text.areaName;
         foundText.textContent = text.textContent;
+        foundText.isOptional = text.isOptional;
 
         foundText.save()
           .then((editedText) => {
@@ -80,8 +82,11 @@ const checkForTextErrors = ((text) => {
   if (!text.areaName) {
     errors.push({ text: 'Please add an area name' });
   }
-  if (!text.textContent) {
+  if (!text.isOptional && !text.textContent) {
     errors.push({ text: 'Please add text content' });
+  }
+  if (text.isOptional !== true && text.isOptional !== false) {
+    errors.push({ text: 'Please determine if text is optional' });
   }
   return errors;
 });
