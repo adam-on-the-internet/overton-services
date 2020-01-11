@@ -14,6 +14,11 @@ const TextSchema = new Schema({
     type: Boolean,
     required: true,
     default: true,
+  },
+  isQuill: {
+    type: Boolean,
+    required: true,
+    default: true,
   }
 });
 

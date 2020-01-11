@@ -21,7 +21,8 @@ function addText(text) {
       new Text({
         areaName: text.areaName,
         textContent: text.textContent,
-        isOptional: text.isOptional
+        isOptional: text.isOptional,
+        isQuill: text.isQuill
       })
         .save()
         .then((resText) => {
@@ -61,6 +62,7 @@ function updateText(text) {
         foundText.areaName = text.areaName;
         foundText.textContent = text.textContent;
         foundText.isOptional = text.isOptional;
+        foundText.isQuill = text.isQuill;
 
         foundText.save()
           .then((editedText) => {
@@ -87,6 +89,9 @@ const checkForTextErrors = ((text) => {
   }
   if (text.isOptional !== true && text.isOptional !== false) {
     errors.push({ text: 'Please determine if text is optional' });
+  }
+  if (text.isQuill !== true && text.isQuill !== false) {
+    errors.push({ text: 'Please determine if text supports Quill functionality' });
   }
   return errors;
 });
