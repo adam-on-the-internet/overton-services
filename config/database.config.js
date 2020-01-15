@@ -2,6 +2,7 @@ const { runningProd } = require('../utilities/env.util');
 
 let mongoUser;
 let mongoPass;
+let mongoCluster;
 
 if (runningProd()) {
   mongoUser = process.env.MONGO_USER;
