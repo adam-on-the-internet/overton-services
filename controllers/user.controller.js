@@ -31,13 +31,13 @@ userController.get('/:id', jwtAuthenticated, (req, res) => {
   });
 });
 
-userController.post('/', jwtAuthenticated, (req, res) => {
+userController.post('/', (req, res) => {
   const user = req.body;
   userManager.register(user)
   .then((registrationResponse) => {
     const recipient = user.email;
-    const subject = "Welcome to Andrew Overton Portfolio";
-    const message = `Your temporary password is ${registrationResponse.newPassword}.`;
+    const subject = "Welcome to Andrew Overton Portfolio!";
+    const message = `Your temporary password is ${registrationResponse.newPassword}. (${new Date()})`;
     sendEmail(recipient, subject, message);
     res.send({
       message: registrationResponse.message
