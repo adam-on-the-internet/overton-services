@@ -35,7 +35,7 @@ userController.get('/:id', jwtAuthenticated, (req, res) => {
 });
 
 userController.post('/', (req, res) => {
-  if (!allowUserCreation) {
+  if (allowUserCreation.toLowerCase() !== "true") {
     res.statusCode = 400;
     res.send(err);
   }
