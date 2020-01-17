@@ -11,7 +11,7 @@ if (runningProd()) {
   }
   catch (e) {
     if (e instanceof Error && e.code === "MODULE_NOT_FOUND")
-      console.log("No mail setup");
+      console.log("No auth setup");
     else
       throw e;
   }
