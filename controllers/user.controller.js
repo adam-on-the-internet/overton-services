@@ -7,7 +7,7 @@ const {
 } = require("../utilities/mailer.util");
 const {
   allowUserCreation
-} = require("../config/auth.config");
+} = require("../config/env.config");
 
 userController.get('/', jwtAuthenticated, (req, res) => {
   userManager.getAllUsers()

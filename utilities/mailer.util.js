@@ -1,5 +1,5 @@
 const nodeMailer = require('nodemailer');
-const {mailerEmail, mailerPass} = require('../config/mail.config');
+const {mailerEmail, mailerPass} = require('../config/env.config');
 
 function sendEmail(recipient, subject, message) {
   const transporter = nodeMailer.createTransport({

@@ -1,5 +1,5 @@
 var jwt = require('express-jwt');
-const {secret} = require('../config/secret.config');
+const {secret} = require('../config/env.config');
 
 module.exports = {
   jwtSecret: secret,

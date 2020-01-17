@@ -48,7 +48,7 @@ var allowCrossDomain = function (req, res, next) {
 app.use(allowCrossDomain);
 
 // session middleware
-const { sessionSecret } = require("./config/secret.config");
+const { sessionSecret } = require("./config/env.config");
 app.use(session({
   secret: sessionSecret,
   resave: true,
