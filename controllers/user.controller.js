@@ -5,6 +5,9 @@ const userManager = require("../managers/user.manager");
 const {
   sendEmail
 } = require("../utilities/mailer.util");
+const {
+  allowUserCreation
+} = require("../config/auth.config");
 
 userController.get('/', jwtAuthenticated, (req, res) => {
   userManager.getAllUsers()
@@ -32,6 +35,10 @@ userController.get('/:id', jwtAuthenticated, (req, res) => {
 });
 
 userController.post('/', (req, res) => {
+  if (!allowUserCreation) {
+    res.statusCode = 400;
+    res.send(err);
+  }
   const user = req.body;
   userManager.register(user)
   .then((registrationResponse) => {
